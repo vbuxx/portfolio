@@ -10,76 +10,126 @@ import {
   Workflow,
 } from 'lucide-react';
 
+const experience = [
+  {
+    period: 'Feb 2026 — Present',
+    role: 'Fullstack Developer',
+    company: 'Dgra Komunika',
+    description:
+      'Building reliable, maintainable websites and web applications for clients, with a focus on performance and efficient server resources.',
+    stack: 'Next.js · React · Node.js · Tailwind CSS · MySQL · Ansible',
+  },
+  {
+    period: 'Oct 2022 — Mar 2026',
+    role: 'Fullstack Developer',
+    company: 'PT. Optify Intermedia Pratama',
+    description:
+      'Delivered and maintained client websites and web apps, shipped new features and landing pages, and solved recurring issues through root-cause analysis.',
+    stack: 'PHP · Laravel · Python · React · Next.js · MySQL · Linux',
+  },
+  {
+    period: 'Jan 2023 — Sep 2024',
+    role: 'Product Engineer',
+    company: 'PT. Sosiago Raharja',
+    description:
+      'Helped plan SOSIAGO v2, investigated recurring product issues, collaborated with Product Design, and supported the operations team on technical tickets.',
+    stack: 'Laravel · React · MySQL',
+  },
+  {
+    period: 'May — Jul 2022',
+    role: 'Backend & Fullstack Developer',
+    company: 'Investree Virtual Internship Experience',
+    description:
+      'Completed focused backend and fullstack learning projects across two virtual internship tracks.',
+    stack: 'Java Spring Boot · Laravel · PostgreSQL',
+  },
+];
+
 const projects = [
   {
     number: '01',
-    title: 'Automobile data pipeline',
+    title: 'BCA Life E-Recruitment',
     description:
-      'A reproducible ETL workflow that turns a messy automobile dataset into a clean, validated, model-ready table.',
-    tags: ['Python', 'Pandas', 'Data quality'],
+      'Web application development for BCA Life’s sales recruitment platform.',
+    tags: ['Web application', 'Development'],
     accentClass: 'bg-buttercream',
-    detail: '205 raw rows → 198 trusted rows',
+    detail: 'BCA Life',
+    href: 'https://salesrecruitment.bcalife.co.id/',
   },
   {
     number: '02',
-    title: 'Operational ML blueprint',
+    title: 'JOMOO Indonesia',
     description:
-      'A practical framework for moving from a business hypothesis to time-aware validation and a safe human-in-the-loop pilot.',
-    tags: ['Machine learning', 'System design', 'MLOps'],
+      'Website development and ongoing maintenance for JOMOO Indonesia’s digital presence.',
+    tags: ['Website', 'Development', 'Maintenance'],
     accentClass: 'bg-ghost-lavender',
-    detail: 'Hypothesis → validation → pilot',
+    detail: 'JOMOO Indonesia',
+    href: 'https://www.jomoo.co.id/id',
   },
   {
     number: '03',
-    title: 'OSINT method review',
+    title: 'SOSIAGO',
     description:
-      'Evidence-first research that separates visible signals, tool inference, automation, and the conclusions data can actually support.',
-    tags: ['OSINT', 'NLP', 'Research'],
+      'Product engineering and web application maintenance for an influencer marketing platform.',
+    tags: ['Product engineering', 'React', 'Laravel'],
     accentClass: 'bg-blush',
-    detail: 'Signals → evidence → limits',
+    detail: 'SOSIAGO',
+    href: 'https://www.sosiago.id/login',
   },
 ];
 
-const capabilities = [
+const additionalProjects = [
+  { label: 'Linkara', href: 'https://linkara.id' },
+  { label: 'ASIX', href: 'https://asix.id' },
+  { label: 'BCA Life', href: 'https://www.bcalife.co.id/' },
+  { label: 'Traktor Nusantara', href: 'https://www.traknus.co.id/' },
+  { label: 'Swadaya Harapan Nusantara', href: 'https://shn.co.id/' },
+];
+
+const learningPillars = [
   {
     icon: Database,
-    eyebrow: '01 / DATA',
-    title: 'Reliable foundations',
-    copy: 'Cleaning, validation, transformation, and pipelines built to be inspected—not just run.',
+    eyebrow: '01 / DATA FOUNDATIONS',
+    title: 'Learning to trust the data',
+    copy: 'Practising Python, Pandas, SQL, cleaning, transformation, and reproducible ETL workflows.',
   },
   {
     icon: BrainCircuit,
-    eyebrow: '02 / INTELLIGENCE',
-    title: 'Useful machine learning',
-    copy: 'Business-led feature thinking, honest evaluation, and models designed around real decisions.',
+    eyebrow: '02 / ML REASONING',
+    title: 'Learning before claiming',
+    copy: 'Studying how to frame business problems, choose useful features, validate over time, and avoid leakage.',
   },
   {
     icon: Workflow,
-    eyebrow: '03 / SYSTEMS',
-    title: 'Human-aware delivery',
-    copy: 'Simple interfaces and operational flows that leave room for context, judgment, and iteration.',
+    eyebrow: '03 / LONG-TERM DIRECTION',
+    title: 'Bringing AI into products',
+    copy: 'Exploring how a strong web engineering foundation can turn AI capabilities into reliable, human-friendly software.',
   },
 ];
 
-const stack = [
-  'Python',
-  'Pandas',
-  'SQL',
-  'Scikit-learn',
-  'Next.js',
-  'TypeScript',
-  'Tailwind CSS',
-  'Git',
+const stackGroups = [
+  {
+    label: 'Languages & runtime',
+    items: ['PHP', 'JavaScript', 'Node.js', 'C#', 'Python', 'SQL'],
+  },
+  {
+    label: 'Frameworks',
+    items: ['React', 'Next.js', 'Laravel', 'ASP.NET', 'Tailwind CSS', 'Bootstrap'],
+  },
+  {
+    label: 'Data & infrastructure',
+    items: ['MySQL', 'PostgreSQL', 'Docker', 'Nginx', 'Ansible', 'Cloudflare'],
+  },
+  {
+    label: 'Engineering practice',
+    items: ['REST API', 'Web Performance', 'Accessibility', 'SEO', 'k6', 'GitHub Actions'],
+  },
 ];
 
-function GhostMark({ inverted = false }: { inverted?: boolean }) {
+function GhostMark() {
   return (
     <span
-      className={`inline-flex size-10 items-center justify-center rounded-full sm:size-11 ${
-        inverted
-          ? 'bg-paper-white text-aubergine'
-          : 'bg-aubergine text-paper-white'
-      }`}
+      className="inline-flex size-10 items-center justify-center rounded-full bg-aubergine text-paper-white sm:size-11"
       aria-hidden="true"
     >
       <Ghost className="size-5 sm:size-[22px]" strokeWidth={1.7} />
@@ -103,19 +153,20 @@ export default function Home() {
         </a>
 
         <nav
-          className="hidden items-center gap-1 rounded-full border border-ash bg-paper-white p-1.5 md:flex"
+          className="hidden items-center gap-1 rounded-full border border-ash bg-paper-white p-1.5 lg:flex"
           aria-label="Main navigation"
         >
           {[
             ['About', '#about'],
+            ['Experience', '#experience'],
             ['Work', '#work'],
-            ['Approach', '#approach'],
+            ['AI Journey', '#ai-journey'],
             ['Stack', '#stack'],
           ].map(([label, href]) => (
             <a
               key={label}
               href={href}
-              className="rounded-full px-4 py-2.5 text-[15px] text-aubergine transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-aubergine"
+              className="rounded-full px-3.5 py-2.5 text-[14px] text-aubergine transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-aubergine"
             >
               {label}
             </a>
@@ -123,11 +174,13 @@ export default function Home() {
         </nav>
 
         <a
-          href="mailto:andhikapramana101@gmail.com?subject=Let%27s%20work%20together"
+          href="/CV-Andhika-Pramana.pdf"
+          target="_blank"
+          rel="noreferrer"
           className="group inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-ghost-lavender px-4 text-[15px] text-aubergine shadow-lavender transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-aubergine sm:px-5"
         >
-          <span className="hidden sm:inline">Let&apos;s talk</span>
-          <Mail className="size-4" strokeWidth={1.8} />
+          <span className="hidden sm:inline">View CV</span>
+          <ArrowDownRight className="size-4" strokeWidth={1.8} />
         </a>
       </header>
 
@@ -137,21 +190,19 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-between gap-4 fade-up">
               <div className="inline-flex items-center gap-2 rounded-full border border-paper-white/20 px-4 py-2 text-[13px] text-paper-white/80">
                 <span className="size-2 rounded-full bg-mint-signal" />
-                Available for thoughtful collaborations
+                Available for fullstack collaborations
               </div>
               <span className="text-[13px] text-paper-white/60">
-                Jakarta, Indonesia · GMT+7
+                Jombang, East Java · GMT+7
               </span>
             </div>
 
             <div className="py-16 sm:py-20 lg:py-24">
               <p className="mb-7 text-[15px] text-paper-white/65 fade-up animation-delay-1">
-                AI &amp; DATA ENGINEER IN THE MAKING
+                FULLSTACK DEVELOPER · LEARNING AI ENGINEERING
               </p>
               <h1 className="max-w-[1120px] text-[clamp(3.3rem,8.4vw,7.5rem)] leading-[0.92] tracking-[-0.055em] fade-up animation-delay-2">
-                Data with a pulse.
-                <br />
-                Pr
+                Web pr
                 <span className="mx-[0.04em] inline-flex align-[-0.03em] text-periwinkle">
                   <Ghost
                     className="size-[0.76em]"
@@ -160,27 +211,41 @@ export default function Home() {
                   />
                 </span>
                 ducts with purpose.
+                <br />
+                AI with curiosity.
               </h1>
-              <p className="mt-9 max-w-[560px] text-[17px] leading-[1.4] text-paper-white/70 fade-up animation-delay-3 sm:text-[19px]">
-                I&apos;m Andhika. I explore the space where clean data, useful AI,
-                and human decisions become one understandable system.
+              <p className="mt-9 max-w-[640px] text-[17px] leading-[1.4] text-paper-white/70 fade-up animation-delay-3 sm:text-[19px]">
+                I&apos;m Andhika, a Fullstack Developer building and maintaining
+                client web applications since 2022. Now I&apos;m taking my first
+                deliberate steps into AI Engineering.
               </p>
             </div>
 
             <div className="flex flex-col gap-6 border-t border-paper-white/15 pt-7 fade-up animation-delay-4 sm:flex-row sm:items-end sm:justify-between">
-              <a
-                href="#work"
-                className="group inline-flex w-fit items-center gap-3 rounded-full bg-ghost-lavender px-6 py-3.5 text-[16px] text-aubergine shadow-lavender transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper-white"
-              >
-                Explore selected work
-                <ArrowDownRight
-                  className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
-                  strokeWidth={1.8}
-                />
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#work"
+                  className="group inline-flex w-fit items-center gap-3 rounded-full bg-ghost-lavender px-6 py-3.5 text-[16px] text-aubergine shadow-lavender transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper-white"
+                >
+                  Explore web work
+                  <ArrowDownRight
+                    className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+                    strokeWidth={1.8}
+                  />
+                </a>
+                <a
+                  href="/CV-Andhika-Pramana.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-fit items-center gap-3 rounded-full border border-paper-white/20 px-6 py-3.5 text-[16px] text-paper-white transition-colors hover:bg-paper-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper-white"
+                >
+                  Open CV
+                  <ArrowUpRight className="size-4" strokeWidth={1.8} />
+                </a>
+              </div>
               <div className="flex items-center gap-3 text-[13px] text-paper-white/55">
                 <Sparkles className="size-4 text-periwinkle" strokeWidth={1.7} />
-                Learning in public, building with care
+                Web engineering roots, beginner&apos;s mind in AI
               </div>
             </div>
           </div>
@@ -195,48 +260,89 @@ export default function Home() {
             </span>
           </div>
           <div>
-            <h2 className="max-w-[850px] text-[clamp(2.6rem,6vw,5.2rem)] leading-[0.98] tracking-[-0.05em] text-aubergine">
-              I like turning complex things into clear next steps.
+            <h2 className="max-w-[880px] text-[clamp(2.6rem,6vw,5.2rem)] leading-[0.98] tracking-[-0.05em] text-aubergine">
+              A fullstack foundation, with a deliberate move into AI.
             </h2>
             <div className="mt-10 grid gap-6 border-t border-ash pt-8 sm:grid-cols-2 sm:gap-12">
               <p className="text-[16px] leading-[1.4] text-obsidian/80">
-                My work starts before the model: understanding the question,
-                inspecting the data, and deciding what a useful outcome really
-                looks like.
+                My professional background is in software engineering: building,
+                maintaining, debugging, and improving websites and web apps for
+                client and product teams.
               </p>
               <p className="text-[16px] leading-[1.4] text-obsidian/80">
-                I care about reproducibility, evidence, and interfaces that help
-                people act with confidence—not just impressive technical output.
+                AI Engineering is a new learning path for me. I&apos;m building the
+                fundamentals carefully—starting with data, machine learning
+                reasoning, and the same reliable engineering habits I use on the web.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="work" className="scroll-mt-20 bg-bone px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <section id="experience" className="scroll-mt-20 bg-bone px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-14 grid gap-7 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+            <span className="h-fit w-fit rounded-full bg-paper-white px-4 py-2 text-[13px] text-aubergine">
+              02 / EXPERIENCE
+            </span>
+            <h2 className="text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.96] tracking-[-0.05em] text-aubergine">
+              From shipping features to solving what breaks.
+            </h2>
+          </div>
+
+          <div className="divide-y divide-ash border-y border-ash">
+            {experience.map((item, index) => (
+              <article
+                key={`${item.company}-${item.period}`}
+                className="grid gap-5 py-8 sm:py-10 lg:grid-cols-[72px_0.65fr_1.35fr] lg:gap-10"
+              >
+                <span className="text-[13px] text-fog">0{index + 1}</span>
+                <div>
+                  <p className="text-[13px] text-fog">{item.period}</p>
+                  <h3 className="mt-2 text-[24px] leading-[1.2] tracking-[-0.035em] text-aubergine">
+                    {item.role}
+                  </h3>
+                  <p className="mt-2 text-[15px] text-aubergine/70">{item.company}</p>
+                </div>
+                <div>
+                  <p className="max-w-[620px] text-[16px] leading-[1.4] text-obsidian/80">
+                    {item.description}
+                  </p>
+                  <p className="mt-5 text-[13px] leading-[1.4] text-fog">{item.stack}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 flex flex-col gap-7 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="inline-flex rounded-full bg-paper-white px-4 py-2 text-[13px] text-aubergine">
-                02 / SELECTED WORK
+              <span className="inline-flex rounded-full bg-bone px-4 py-2 text-[13px] text-aubergine">
+                03 / SELECTED WEB WORK
               </span>
               <h2 className="mt-7 text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.96] tracking-[-0.05em] text-aubergine">
-                Curious work,
+                Real products,
                 <br />
-                carefully made.
+                real responsibility.
               </h2>
             </div>
             <p className="max-w-[360px] text-[15px] leading-[1.4] text-fog">
-              A small selection of practical explorations across data engineering,
-              operational ML, and evidence-led research.
+              A selection of web applications and websites I have helped develop,
+              maintain, or improve.
             </p>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-3">
             {projects.map((project) => (
-              <article
+              <a
                 key={project.number}
-                className="group flex min-h-[520px] flex-col justify-between rounded-[28px] border border-ash bg-paper-white p-7 transition-colors hover:border-periwinkle sm:p-9"
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex min-h-[500px] flex-col justify-between rounded-[28px] border border-ash bg-paper-white p-7 transition-colors hover:border-periwinkle focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-aubergine sm:p-9"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -273,29 +379,48 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </article>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-2">
+            <span className="mr-2 text-[13px] text-fog">Also worked on</span>
+            {additionalProjects.map((project) => (
+              <a
+                key={project.label}
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-bone px-4 py-2.5 text-[13px] text-aubergine transition-colors hover:bg-ghost-lavender focus-visible:outline-2 focus-visible:outline-aubergine"
+              >
+                {project.label} ↗
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="approach" className="scroll-mt-20 px-3 py-3 sm:px-5 lg:px-8">
+      <section id="ai-journey" className="scroll-mt-20 px-3 py-3 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-[1390px] rounded-[32px] bg-aubergine px-6 py-24 text-paper-white sm:rounded-[40px] sm:px-10 sm:py-32 lg:px-16">
           <div className="mx-auto max-w-[1200px]">
             <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
               <div>
                 <span className="inline-flex rounded-full border border-paper-white/20 px-4 py-2 text-[13px] text-paper-white/75">
-                  03 / APPROACH
+                  04 / AI LEARNING JOURNEY
                 </span>
                 <h2 className="mt-8 text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.96] tracking-[-0.05em]">
-                  Less magic.
+                  Strong web roots.
                   <br />
-                  More clarity.
+                  Beginner&apos;s mind.
                 </h2>
+                <p className="mt-7 max-w-[430px] text-[15px] leading-[1.4] text-paper-white/60">
+                  I&apos;m early in this chapter, so the focus is on fundamentals,
+                  honest experiments, and steady progress—not inflated titles.
+                </p>
               </div>
 
               <div className="divide-y divide-paper-white/15 border-y border-paper-white/15">
-                {capabilities.map(({ icon: Icon, eyebrow, title, copy }) => (
+                {learningPillars.map(({ icon: Icon, eyebrow, title, copy }) => (
                   <article
                     key={title}
                     className="grid gap-5 py-8 sm:grid-cols-[56px_1fr] sm:py-10"
@@ -322,39 +447,71 @@ export default function Home() {
 
       <section id="stack" className="scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
         <div className="mx-auto max-w-[1200px]">
-          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
             <div>
               <span className="inline-flex rounded-full bg-bone px-4 py-2 text-[13px] text-aubergine">
-                04 / TOOLKIT
+                05 / TOOLKIT
               </span>
               <h2 className="mt-8 text-[clamp(2.8rem,6vw,5.5rem)] leading-[0.96] tracking-[-0.05em] text-aubergine">
-                Tools are the medium, not the point.
+                Built for the full web stack.
               </h2>
+              <p className="mt-7 max-w-[420px] text-[15px] leading-[1.4] text-fog">
+                Tools I&apos;ve used across development, maintenance, performance,
+                deployment, and my current AI learning track.
+              </p>
             </div>
-            <div className="flex content-start flex-wrap gap-3 lg:pt-16">
-              {stack.map((item, index) => (
-                <span
-                  key={item}
-                  className={`rounded-full px-5 py-3 text-[15px] text-aubergine ${
-                    index % 4 === 0
-                      ? 'bg-ghost-lavender'
-                      : index % 4 === 1
-                        ? 'bg-buttercream'
-                        : index % 4 === 2
-                          ? 'bg-blush'
-                          : 'bg-bone'
-                  }`}
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:pt-16">
+              {stackGroups.map((group, groupIndex) => (
+                <article
+                  key={group.label}
+                  className="rounded-[28px] border border-ash bg-paper-white p-7"
                 >
-                  {item}
-                </span>
+                  <p className="text-[13px] text-fog">{group.label}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {group.items.map((item, itemIndex) => (
+                      <span
+                        key={item}
+                        className={`rounded-full px-3.5 py-2 text-[13px] text-aubergine ${
+                          (groupIndex + itemIndex) % 4 === 0
+                            ? 'bg-ghost-lavender'
+                            : (groupIndex + itemIndex) % 4 === 1
+                              ? 'bg-buttercream'
+                              : (groupIndex + itemIndex) % 4 === 2
+                                ? 'bg-blush'
+                                : 'bg-bone'
+                        }`}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
               ))}
-              <div className="mt-8 w-full rounded-[28px] border border-ash p-7 sm:p-9">
+
+              <article className="rounded-[28px] border border-ash p-7 sm:col-span-2 sm:p-9">
                 <Code2 className="size-6 text-periwinkle" strokeWidth={1.6} />
-                <p className="mt-8 max-w-[560px] text-[24px] leading-[1.25] tracking-[-0.035em] text-aubergine sm:text-[30px]">
-                  The stack changes. The habit stays: understand the problem,
-                  test the assumptions, and make the result easy to trust.
-                </p>
-              </div>
+                <div className="mt-8 grid gap-7 sm:grid-cols-2 sm:gap-12">
+                  <div>
+                    <p className="text-[13px] text-fog">Education</p>
+                    <p className="mt-3 text-[20px] leading-[1.3] text-aubergine">
+                      B.Eng. in Electrical Engineering
+                    </p>
+                    <p className="mt-2 text-[14px] leading-[1.4] text-fog">
+                      Universitas Brawijaya · GPA 3.68/4.00 · 2017–2021
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[13px] text-fog">Training</p>
+                    <p className="mt-3 text-[20px] leading-[1.3] text-aubergine">
+                      Fullstack Developer Bootcamp
+                    </p>
+                    <p className="mt-2 text-[14px] leading-[1.4] text-fog">
+                      Metrodata Academy × KOMINFO · 2022
+                    </p>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -365,20 +522,21 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px]">
             <div className="flex items-start justify-between gap-6">
               <span className="inline-flex rounded-full border border-aubergine/15 px-4 py-2 text-[13px]">
-                05 / CONTACT
+                06 / CONTACT
               </span>
               <GhostMark />
             </div>
-            <h2 className="mt-14 max-w-[1000px] text-[clamp(3.2rem,8vw,7.2rem)] leading-[0.92] tracking-[-0.055em]">
-              Have a problem worth untangling?
+            <h2 className="mt-14 max-w-[1050px] text-[clamp(3.2rem,8vw,7.2rem)] leading-[0.92] tracking-[-0.055em]">
+              Need a dependable web product built?
             </h2>
             <div className="mt-12 flex flex-col gap-6 border-t border-aubergine/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-[460px] text-[15px] leading-[1.4] text-aubergine/70">
-                I&apos;m always happy to talk about data, AI systems, research,
-                or a thoughtful collaboration.
+              <p className="max-w-[500px] text-[15px] leading-[1.4] text-aubergine/70">
+                I&apos;m open to conversations about fullstack development,
+                product engineering, web performance, and learning opportunities
+                at the intersection of software and AI.
               </p>
               <a
-                href="mailto:andhikapramana101@gmail.com?subject=Hello%20Andhika"
+                href="mailto:andhikapramana807@gmail.com?subject=Hello%20Andhika"
                 className="group inline-flex w-fit items-center gap-3 rounded-full bg-aubergine px-6 py-3.5 text-[16px] text-paper-white transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-aubergine"
               >
                 Start a conversation
@@ -393,19 +551,19 @@ export default function Home() {
       </section>
 
       <footer className="mx-auto flex max-w-[1320px] flex-col gap-8 px-5 py-10 text-[13px] text-fog sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
-        <p>© 2026 Andhika Pramana. Made with curiosity.</p>
+        <p>© 2026 Andhika Pramana. Fullstack roots, curious future.</p>
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/andhikapramana"
+            href="/CV-Andhika-Pramana.pdf"
             target="_blank"
             rel="noreferrer"
-            className="flex size-10 items-center justify-center rounded-full border border-ash text-aubergine transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-aubergine"
-            aria-label="GitHub"
+            className="flex h-10 items-center justify-center rounded-full border border-ash px-4 text-aubergine transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-aubergine"
+            aria-label="Open CV"
           >
-            <span className="text-[11px] tracking-[-0.02em]">GH</span>
+            CV
           </a>
           <a
-            href="mailto:andhikapramana101@gmail.com"
+            href="mailto:andhikapramana807@gmail.com"
             className="flex size-10 items-center justify-center rounded-full border border-ash text-aubergine transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-aubergine"
             aria-label="Email"
           >
