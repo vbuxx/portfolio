@@ -5,9 +5,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     'https://andhika-pramana-portfolio.andhikapramana807.chatgpt.site',
   ),
-  title: 'Andhika Pramana — Fullstack Developer',
+  title: 'Andhika Pramana — Fullstack Developer & AI Engineering Learner',
   description:
-    'Portfolio of Andhika Pramana, a Fullstack Developer building reliable web products and beginning a deliberate journey into AI Engineering.',
+    'A motion-led portfolio by Andhika Pramana: dependable fullstack products, thoughtful engineering, and a growing practice in AI.',
   keywords: [
     'Andhika Pramana',
     'Fullstack Developer',
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     'Portfolio',
   ],
   openGraph: {
-    title: 'Andhika Pramana — Fullstack Developer',
+    title: 'Andhika Pramana — Fullstack Developer & AI Engineering Learner',
     description:
-      'Reliable web products, built with purpose. A deliberate journey into AI Engineering.',
+      'Thoughtful web products, built to move. A deliberate journey into AI Engineering.',
     type: 'website',
     images: [
       {
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Andhika Pramana — Fullstack Developer',
+    title: 'Andhika Pramana — Fullstack Developer & AI Engineering Learner',
     description:
-      'Reliable web products, built with purpose. A deliberate journey into AI Engineering.',
+      'Thoughtful web products, built to move. A deliberate journey into AI Engineering.',
     images: ['/og.png'],
   },
 };
