@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-aubergine: #3c315b;
+  --color-ghost-lavender: #e2dffe;
+  --color-periwinkle: #ab9ff2;
+  --color-cornflower: #4a87f2;
+  --color-buttercream: #ffffc4;
+  --color-blush: #ffdadc;
+  --color-mint-signal: #2ec08b;
+  --color-paper-white: #fdfcfe;
+  --color-obsidian: #1c1c1c;
+  --color-fog: #86848d;
+  --color-ash: #e9e8ea;
+  --color-bone: #f4f2f4;
+  --shadow-lavender: rgb(226, 223, 254) 0 0 4px 0;
+}
+
+:root {
+  --background: #fdfcfe;
+  --foreground: #1c1c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, 'SF Pro Display', 'SF Pro Text', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 350;
+  letter-spacing: -0.025em;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #ab9ff2;
+  color: #3c315b;
+}
+
+.fade-up {
+  animation: fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animation-delay-1 {
+  animation-delay: 80ms;
+}
+
+.animation-delay-2 {
+  animation-delay: 160ms;
+}
+
+.animation-delay-3 {
+  animation-delay: 240ms;
+}
+
+.animation-delay-4 {
+  animation-delay: 320ms;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
