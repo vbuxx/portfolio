@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    'https://andhika-pramana-portfolio.adept-comet-8367.chatgpt.site',
+    'https://andhika-pramana-portfolio.andhikapramana807.chatgpt.site',
   ),
   title: 'Andhika Pramana — AI & Data Engineer',
   description:
