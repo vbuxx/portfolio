@@ -70,7 +70,7 @@ export function usePortfolioMotion(
 
           const entrance = gsap.timeline({ defaults: { ease: 'power3.out' } });
           entrance
-            .from('.site-header > *', {
+            .from('.site-header-inner > *', {
               y: -18,
               opacity: 0,
               stagger: 0.08,

@@ -237,47 +237,51 @@ export default function Home() {
       <div className="scroll-progress" aria-hidden="true" />
 
       <header className="site-header">
-        <a
-          href="#top"
-          className="brand"
-          aria-label="Andhika Pramana, back to top"
-        >
-          <Mark />
-          <span>andhika.</span>
-        </a>
-
-        <nav className="nav-capsule" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#ai-journey">AI chapter</a>
-          <a href="#stack">Toolkit</a>
-        </nav>
-
-        <div className="header-actions">
-          <button
-            type="button"
-            className="motion-toggle"
-            aria-label={motionPaused ? 'Resume animations' : 'Pause animations'}
-            aria-pressed={motionPaused}
-            title={motionPaused ? 'Resume animations' : 'Pause animations'}
-            onClick={() => setMotionPaused((value) => !value)}
-          >
-            {motionPaused ? (
-              <Play aria-hidden="true" />
-            ) : (
-              <Pause aria-hidden="true" />
-            )}
-          </button>
+        <div className="site-header-inner">
           <a
-            className="header-cta"
-            href="/CV-Andhika-Pramana.pdf"
-            target="_blank"
-            rel="noreferrer"
+            href="#top"
+            className="brand"
+            aria-label="Andhika Pramana, back to top"
           >
-            <span>View CV</span>
-            <ArrowUpRight aria-hidden="true" />
+            <Mark />
+            <span>andhika.</span>
           </a>
+
+          <nav className="nav-capsule" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#ai-journey">AI chapter</a>
+            <a href="#stack">Toolkit</a>
+          </nav>
+
+          <div className="header-actions">
+            <button
+              type="button"
+              className="motion-toggle"
+              aria-label={
+                motionPaused ? 'Resume animations' : 'Pause animations'
+              }
+              aria-pressed={motionPaused}
+              title={motionPaused ? 'Resume animations' : 'Pause animations'}
+              onClick={() => setMotionPaused((value) => !value)}
+            >
+              {motionPaused ? (
+                <Play aria-hidden="true" />
+              ) : (
+                <Pause aria-hidden="true" />
+              )}
+            </button>
+            <a
+              className="header-cta"
+              href="/CV-Andhika-Pramana.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>View CV</span>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </header>
 
@@ -431,23 +435,25 @@ export default function Home() {
         </div>
 
         <div className="experience-carousel" ref={experienceCarousel}>
-          {experience.map((item, index) => (
-            <article
-              className="experience-card"
-              key={`${item.company}-${item.period}`}
-            >
-              <div className="experience-card-head">
-                <span>{item.period}</span>
-                <span>0{index + 1}</span>
-              </div>
-              <div>
-                <p className="experience-company">{item.company}</p>
-                <h3>{item.role}</h3>
-                <p>{item.copy}</p>
-              </div>
-              <span className="experience-stack">{item.stack}</span>
-            </article>
-          ))}
+          <div className="experience-track">
+            {experience.map((item, index) => (
+              <article
+                className="experience-card"
+                key={`${item.company}-${item.period}`}
+              >
+                <div className="experience-card-head">
+                  <span>{item.period}</span>
+                  <span>0{index + 1}</span>
+                </div>
+                <div>
+                  <p className="experience-company">{item.company}</p>
+                  <h3>{item.role}</h3>
+                  <p>{item.copy}</p>
+                </div>
+                <span className="experience-stack">{item.stack}</span>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
