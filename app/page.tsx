@@ -1,6 +1,7 @@
 'use client';
 
-import { type CSSProperties, type RefObject, useEffect, useRef } from 'react';
+import { type RefObject, useRef, useState } from 'react';
+import { usePortfolioMotion } from '@/hooks/use-portfolio-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,6 +12,8 @@ import {
   Database,
   Gauge,
   Mail,
+  Pause,
+  Play,
   Sparkles,
   Terminal,
   Workflow,
@@ -141,7 +144,9 @@ function CarouselControls({
   const move = (direction: number) => {
     target.current?.scrollBy({
       left: direction * Math.min(target.current.clientWidth * 0.82, 560),
-      behavior: 'smooth',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'instant'
+        : 'smooth',
     });
   };
 
@@ -214,54 +219,14 @@ function ProjectVisual({ tone, title }: { tone: string; title: string }) {
 }
 
 export default function Home() {
+  const site = useRef<HTMLElement>(null);
+  const [motionPaused, setMotionPaused] = useState(false);
   const workCarousel = useRef<HTMLDivElement>(null);
   const experienceCarousel = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const heroProgress = Math.min(
-        window.scrollY / Math.max(window.innerHeight, 1),
-        1,
-      );
-      const pageProgress =
-        window.scrollY /
-        Math.max(document.body.scrollHeight - window.innerHeight, 1);
-      root.style.setProperty('--hero-progress', heroProgress.toFixed(3));
-      root.style.setProperty('--page-progress', pageProgress.toFixed(3));
-    };
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(update);
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
-        });
-      },
-      { threshold: 0.16 },
-    );
-
-    document
-      .querySelectorAll('[data-reveal]')
-      .forEach((element) => observer.observe(element));
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
+  usePortfolioMotion(site, motionPaused);
 
   return (
-    <main className="site-shell">
+    <main className="site-shell" ref={site} data-motion-paused={motionPaused}>
       <div className="scroll-progress" aria-hidden="true" />
 
       <header className="site-header">
@@ -282,22 +247,37 @@ export default function Home() {
           <a href="#stack">Toolkit</a>
         </nav>
 
-        <a
-          className="header-cta"
-          href="/CV-Andhika-Pramana.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>View CV</span>
-          <ArrowUpRight aria-hidden="true" />
-        </a>
+        <div className="header-actions">
+          <button
+            type="button"
+            className="motion-toggle"
+            aria-label={motionPaused ? 'Resume animations' : 'Pause animations'}
+            aria-pressed={motionPaused}
+            title={motionPaused ? 'Resume animations' : 'Pause animations'}
+            onClick={() => setMotionPaused((value) => !value)}
+          >
+            {motionPaused ? (
+              <Play aria-hidden="true" />
+            ) : (
+              <Pause aria-hidden="true" />
+            )}
+          </button>
+          <a
+            className="header-cta"
+            href="/CV-Andhika-Pramana.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>View CV</span>
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+        </div>
       </header>
 
       <section id="top" className="hero-wrap">
         <div className="hero-film">
           <video
             className="hero-media"
-            autoPlay
             muted
             loop
             playsInline
@@ -312,26 +292,29 @@ export default function Home() {
           <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
 
           <div className="hero-content">
-            <p className="hero-eyebrow intro-rise">
+            <p className="hero-eyebrow">
               Full Stack Developer · Founder · AI Engineer in training
             </p>
-            <h1 className="intro-rise intro-delay-1">
-              Web products
-              <br />
-              with a pulse.
+            <h1 aria-label="Web products with a pulse.">
+              <span className="line-mask" aria-hidden="true">
+                <span className="hero-line">Web products</span>
+              </span>
+              <span className="line-mask" aria-hidden="true">
+                <span className="hero-line">with a pulse.</span>
+              </span>
             </h1>
-            <p className="hero-copy intro-rise intro-delay-2">
+            <p className="hero-copy">
               I&apos;m Andhika Pramana. For nearly four years, I&apos;ve turned
               ambiguous briefs into launch-ready systems. Now I&apos;m taking
               that product instinct into AI.
             </p>
-            <a href="#work" className="hero-cta intro-rise intro-delay-3">
+            <a href="#work" className="hero-cta">
               Explore selected work
               <ArrowUpRight aria-hidden="true" />
             </a>
           </div>
 
-          <div className="hero-status intro-rise intro-delay-3">
+          <div className="hero-status">
             <span>
               <i />
               Available immediately · Open to relocation
@@ -346,14 +329,16 @@ export default function Home() {
           <p className="section-kicker" data-reveal>
             WHAT I BRING
           </p>
-          <h2 className="statement-title" data-reveal>
-            I make complex
+          <h2 className="statement-title">
+            <span className="statement-word">I</span>{' '}
+            <span className="statement-word">make</span>{' '}
+            <span className="statement-word">complex</span>
             <br />
-            feel{' '}
+            <span className="statement-word">feel</span>{' '}
             <span className="inline-mark">
               <Mark inverted />
             </span>{' '}
-            inevitable.
+            <span className="statement-word">inevitable.</span>
           </h2>
           <p className="statement-copy" data-reveal>
             From first sketch to go-live, I connect product decisions, code,
@@ -394,15 +379,13 @@ export default function Home() {
         </div>
 
         <div className="card-carousel" ref={workCarousel}>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <a
               href={project.href}
               target="_blank"
               rel="noreferrer"
               className="project-card"
               key={project.title}
-              data-reveal
-              style={{ '--delay': `${index * 90}ms` } as CSSProperties}
             >
               <ProjectVisual tone={project.tone} title={project.title} />
               <div className="project-card-copy">
@@ -445,8 +428,6 @@ export default function Home() {
             <article
               className="experience-card"
               key={`${item.company}-${item.period}`}
-              data-reveal
-              style={{ '--delay': `${index * 90}ms` } as CSSProperties}
             >
               <div className="experience-card-head">
                 <span>{item.period}</span>
@@ -464,19 +445,23 @@ export default function Home() {
       </section>
 
       <div className="ticker" aria-label="Design and engineering principles">
-        <div>
-          <span>RELIABLE BY DEFAULT</span>
-          <i />
-          <span>CURIOUS BY NATURE</span>
-          <i />
-          <span>BUILT FOR PEOPLE</span>
-          <i />
-          <span>RELIABLE BY DEFAULT</span>
-          <i />
-          <span>CURIOUS BY NATURE</span>
-          <i />
-          <span>BUILT FOR PEOPLE</span>
-          <i />
+        <div className="ticker-track" aria-hidden="true">
+          <div className="ticker-group">
+            <span>RELIABLE BY DEFAULT</span>
+            <i />
+            <span>CURIOUS BY NATURE</span>
+            <i />
+            <span>BUILT FOR PEOPLE</span>
+            <i />
+          </div>
+          <div className="ticker-group">
+            <span>RELIABLE BY DEFAULT</span>
+            <i />
+            <span>CURIOUS BY NATURE</span>
+            <i />
+            <span>BUILT FOR PEOPLE</span>
+            <i />
+          </div>
         </div>
       </div>
 
@@ -498,13 +483,8 @@ export default function Home() {
         </div>
 
         <div className="learning-grid">
-          {learning.map(({ icon: Icon, number, title, copy }, index) => (
-            <article
-              className="learning-card"
-              key={title}
-              data-reveal
-              style={{ '--delay': `${index * 100}ms` } as CSSProperties}
-            >
+          {learning.map(({ icon: Icon, number, title, copy }) => (
+            <article className="learning-card" key={title}>
               <div className="learning-card-head">
                 <span>{number}</span>
                 <Icon aria-hidden="true" />
@@ -531,12 +511,7 @@ export default function Home() {
               index
             ];
             return (
-              <article
-                className="stack-card"
-                key={label}
-                data-reveal
-                style={{ '--delay': `${index * 60}ms` } as CSSProperties}
-              >
+              <article className="stack-card" key={label}>
                 <div>
                   <Icon aria-hidden="true" />
                   <span>0{index + 1}</span>
@@ -551,13 +526,17 @@ export default function Home() {
 
       <section className="contact-chapter">
         <div className="contact-sticky">
+          <div className="contact-orbit" aria-hidden="true" />
           <p className="section-kicker" data-reveal>
             THE NEXT USEFUL THING
           </p>
-          <h2 data-reveal>
-            Bring the brief.
-            <br />
-            <span>I&apos;ll bring the build.</span>
+          <h2 aria-label="Bring the brief. I'll bring the build.">
+            <span className="line-mask" aria-hidden="true">
+              <span className="contact-line">Bring the brief.</span>
+            </span>
+            <span className="line-mask contact-accent" aria-hidden="true">
+              <span className="contact-line">I&apos;ll bring the build.</span>
+            </span>
           </h2>
           <a
             href="mailto:andhikapramana807@gmail.com?subject=Hello%20Andhika"
