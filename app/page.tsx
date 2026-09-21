@@ -1,6 +1,7 @@
 'use client';
 
 import { type RefObject, useRef, useState } from 'react';
+import Image from 'next/image';
 import { usePortfolioMotion } from '@/hooks/use-portfolio-motion';
 import {
   ArrowLeft,
@@ -129,7 +130,13 @@ function Mark({ inverted = false }: { inverted?: boolean }) {
       className={`brand-mark ${inverted ? 'brand-mark-inverted' : ''}`}
       aria-hidden="true"
     >
-      AP
+      <Image
+        className="brand-mark-image"
+        src="/logo-ap.png"
+        alt=""
+        width={1254}
+        height={1254}
+      />
     </span>
   );
 }
