@@ -1,6 +1,6 @@
 'use client';
 
-import { type RefObject, useRef, useState } from 'react';
+import { type RefObject, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { usePortfolioMotion } from '@/hooks/use-portfolio-motion';
 import {
@@ -231,6 +231,12 @@ export default function Home() {
   const workCarousel = useRef<HTMLDivElement>(null);
   const experienceCarousel = useRef<HTMLDivElement>(null);
   usePortfolioMotion(site, motionPaused);
+
+  useLayoutEffect(() => {
+    if (experienceCarousel.current) {
+      experienceCarousel.current.scrollLeft = 0;
+    }
+  }, []);
 
   return (
     <main className="site-shell" ref={site} data-motion-paused={motionPaused}>

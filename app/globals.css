@@ -623,7 +623,6 @@ button:focus-visible {
 .experience-carousel {
   overflow-x: auto;
   scrollbar-width: none;
-  scroll-snap-type: x mandatory;
   overscroll-behavior-inline: contain;
 }
 
@@ -848,7 +847,6 @@ button:focus-visible {
   border-radius: 30px;
   background: #f9f8fc;
   color: #2e2935;
-  scroll-snap-align: start;
 }
 
 .experience-card:nth-child(2) {
